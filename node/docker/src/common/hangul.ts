@@ -59,6 +59,10 @@ export const hangulSearch = (target: string, keyword: string): boolean => {
   return check;
 };
 
-export const getChosungSearchedData = <T extends object>(target: keyof T, data: T[], keyword: string): T[] => {
-  return data.filter((value) => hangulSearch(value[`${target as string}`], keyword));
+export const getChosungSearchedData = <T extends Record<string, any>>(
+  target: keyof T,
+  data: T[],
+  keyword: string
+): T[] => {
+  return data.filter((value) => hangulSearch(value[target], keyword));
 };
