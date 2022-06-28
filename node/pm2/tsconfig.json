@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "src/*": ["@/*"]
+    },
+
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+
+    "lib": ["es2015", "es2019", "es2020"],
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "downlevelIteration": true,
+    "typeRoots": ["./src/@types"]
+  },
+
+  "include": [
+    "src/**/*.json",
+    "src/**/*.ts",
+    "src/*.ts",
+    "files/*.ts",
+    "node_modules/multer"
+  ],
+  "exclude": ["node_modules", "dist"]
+}
