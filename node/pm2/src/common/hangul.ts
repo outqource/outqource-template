@@ -1,4 +1,4 @@
-import * as Hangul from 'hangul-js';
+import * as Hangul from "hangul-js";
 
 const korean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 
@@ -14,15 +14,18 @@ export const hangulSearch = (target: string, keyword: string): boolean => {
 
   for (let i = 0; i < keyword.length; i++) {
     if (Hangul.isJong(keyword[i])) {
-      keyword = keyword.slice(0, i) + Hangul.d(keyword[i]).join('') + keyword.slice(i + 1);
+      keyword =
+        keyword.slice(0, i) +
+        Hangul.d(keyword[i]).join("") +
+        keyword.slice(i + 1);
     }
   }
 
   const seperatedTarget = Hangul.d(target, true);
   const seperatedKeyword = Hangul.d(keyword, true);
 
-  const choTarget = seperatedTarget.map((el) => el[0]).join('');
-  const choKeyword = seperatedKeyword.map((el) => el[0]).join('');
+  const choTarget = seperatedTarget.map((el) => el[0]).join("");
+  const choKeyword = seperatedKeyword.map((el) => el[0]).join("");
 
   let correctIdx = choTarget.indexOf(choKeyword);
   let check = false;
@@ -34,7 +37,9 @@ export const hangulSearch = (target: string, keyword: string): boolean => {
       const dTargetIdx = charIdx + correctIdx;
 
       for (let dIdx = 0; dIdx < seperatedKeyword[charIdx].length; dIdx++) {
-        if (seperatedTarget[dTargetIdx][dIdx] !== seperatedKeyword[charIdx][dIdx]) {
+        if (
+          seperatedTarget[dTargetIdx][dIdx] !== seperatedKeyword[charIdx][dIdx]
+        ) {
           check = false;
 
           if (
@@ -59,6 +64,10 @@ export const hangulSearch = (target: string, keyword: string): boolean => {
   return check;
 };
 
-export const getChosungSearchedData = <T extends object>(target: keyof T, data: T[], keyword: string): T[] => {
-  return data.filter((value) => hangulSearch(value[`${target as string}`], keyword));
+export const getChosungSearchedData = <T extends Record<string, string>>(
+  target: keyof T,
+  data: T[],
+  keyword: string
+): T[] => {
+  return data.filter((value) => hangulSearch(value[target], keyword));
 };
