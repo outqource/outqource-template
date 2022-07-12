@@ -1,0 +1,5 @@
+{
+  "react":  ["cms"],
+  "node": ["pm2", "docker"],
+  "react-native": []
+}
