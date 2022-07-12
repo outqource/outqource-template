@@ -6,7 +6,6 @@ type ENV = {
   PORT: number;
   DATABASE_URL: string;
   CLIENT_URL: string;
-
   SWAGGER_PATH: string;
   SWAGGER_URLS: string;
   SOFT_DELETE_MODELS: string;

@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "ignore": ["node_modules", "env", "prisma"],
+  "exec": "ts-node -r tsconfig-paths/register ./src/index.ts",
+  "watch": ["ts", "js"]
+}

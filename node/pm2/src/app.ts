@@ -9,7 +9,7 @@ import path from 'path';
 const openAPIOptions: OpenAPIOptions = {
   title: '메디스 서버',
   version: '0.0.1',
-  urls: config.SWAGGER_URLS.split(','),
+  urls: (config.SWAGGER_URLS || '')?.split(','),
 };
 
 const initApp = new InitApp({

@@ -5,18 +5,16 @@
     "config:local": "cp ./env/.env.local .env",
     "config:dev": "cp ./env/.env.dev .env ",
     "config:prod": "cp ./env/.env.prod .env",
-    "start": "nodemon --watch '*.ts' --exec 'ts-node' -r tsconfig-paths/register ./src/index.ts",
+    "start": "nodemon",
     "start:build": "node dist/index.js",
     "local": "yarn config:local && yarn start",
     "dev": "yarn config:dev && yarn start",
     "prod": "yarn config:prod && yarn start",
-    "docker:dev": "yarn config:dev && docker-compose up",
-    "docker:prod": "yarn config:prod && docker-compose up -d",
     "build:clear": "rm -rf dist",
     "build:dev": "yarn config:dev && yarn build:clear && tsc -p tsconfig.json && tsc-alias -p tsconfig.json && yarn run config:dev",
     "build:prod": "yarn config:prod && yarn build:clear &&  tsc -p tsconfig.json && yarn run config:prod",
-    "pm2:dev": " yarn build:dev && pm2 flush &&pm2 start --node-args='-r dotenv/config' ecosystem.config.js ",
-    "pm2:prod": " yarn build:prod && pm2 flush && pm2 start --node-args='-r dotenv/config' ecosystem.config.js "
+    "pm2:dev": "yarn build:dev && pm2 flush && pm2 start --node-args='-r dotenv/config' ecosystem.config.js",
+    "pm2:prod": "yarn build:prod && pm2 flush && pm2 start --node-args='-r dotenv/config' ecosystem.config.js "
   },
   "dependencies": {
     "@prisma/client": "^3.15.2",
