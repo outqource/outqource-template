@@ -8,6 +8,7 @@ export { useGA } from './useGA'
 export { useI18n } from './useI18n'
 export { useKeys } from './useKeys'
 export { useSendApi } from './useSendApi'
+export { useTimeoutFn } from './useTimeoutFn'
 export { useAppDispatch } from './useAppDispatch'
 export { useAppSelector } from './useAppSelector'
 

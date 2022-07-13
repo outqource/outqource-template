@@ -20,6 +20,10 @@ export const useKeys = () => {
     })
   }
 
+  // const { useEnterToConfirm } = useKeys()
+  // const closeBtnRef = useRef<HTMLButtonElement>(null)
+  // useEnterToConfirm(closeBtnRef)
+
   const useEnterToConfirm = (btnRef: RefObject<HTMLButtonElement>, cb?: (e?: KeyboardEvent) => void) => {
     const handleKeyDown = useCallback(
       (e: KeyboardEvent) => {
