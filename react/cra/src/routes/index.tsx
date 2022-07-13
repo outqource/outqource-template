@@ -9,7 +9,9 @@ import GNB from 'routes/_shared/GNB'
 import Buttons from './Buttons'
 import GoogleMaps from './GoogleMaps'
 import KakaoMaps from './KakaoMaps'
-import Corona from './Chart'
+// Commented out because of recent version bugs
+// https://github.com/FormidableLabs/victory/issues/2346
+// import Corona from './Chart'
 import TodoList from './TodoList'
 import Weather from './Weathers'
 
@@ -36,7 +38,7 @@ const App = () => {
           <Route path='google' element={<GoogleMaps />} />
           <Route path='kakao' element={<KakaoMaps />} />
           <Route path='buttons' element={<Buttons />} />
-          <Route path='corona' element={<Corona />} />
+          {/* <Route path='corona' element={<Corona />} /> */}
           <Route path='todo' element={<TodoList />} />
           <Route path='weather' element={<Weather />}>
             <Route path=':city' element={<Weather />} />
