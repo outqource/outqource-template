@@ -1,23 +1,18 @@
 import { ValueOf } from 'types'
 
-export const SAMPLE_PAGE = {
-  ENTER: 'sample_enter',
-  CLICK: 'sample_click',
-  CANCEL: 'sample_cancel',
-  BACK: 'sample_back',
-  CONFIRM: 'sample_complete',
+export const GA_EVENT_NAMES = {
+  LANGUAGE_CHANGED: 'language-changed',
+  THEME_CHANGED: 'theme-changed',
 } as const
 
 export type DataType = {
-  [SAMPLE_PAGE.CLICK]: {
-    testValue: number
+  [GA_EVENT_NAMES.LANGUAGE_CHANGED]: {
+    lang: string
   }
-  [SAMPLE_PAGE.CONFIRM]: {
-    testValue: string
-    testValue2: number | string
-    testValue3: string
+  [GA_EVENT_NAMES.THEME_CHANGED]: {
+    theme: string
   }
   [key: string]: unknown
 }
 
-export type EventNameTypes = ValueOf<typeof SAMPLE_PAGE>
+export type EventNameTypes = ValueOf<typeof GA_EVENT_NAMES>

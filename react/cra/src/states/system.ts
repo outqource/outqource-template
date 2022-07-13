@@ -1,37 +1,40 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import store, { THEME_KEY } from 'utils/store'
+
 import type { RootState } from '.'
-import store, { COLOR_SET_KEY } from 'utils/store'
 
 export interface SystemState {
-  devMode: boolean
-  colorSet: string
+  theme: string
 }
 
 const INITIAL_STATE: SystemState = {
-  devMode: false,
-  colorSet: store.get(COLOR_SET_KEY) || 'dark',
+  theme: store.get(THEME_KEY) || 'light',
 }
 
 const systemSlice = createSlice({
   name: 'system',
   initialState: INITIAL_STATE,
   reducers: {
-    setDevMode: (state: SystemState, action: PayloadAction<boolean>) => {
-      state.devMode = action.payload
+    setTheme: (state: SystemState, action: PayloadAction<string>) => {
+      const newColorSet = action.payload
+      store.set(THEME_KEY, newColorSet)
+      document.documentElement.setAttribute('color-theme', newColorSet)
+      state.theme = newColorSet
     },
-    setColorSet: (state: SystemState, action: PayloadAction<string>) => {
-      state.colorSet = action.payload
+    toggleTheme: (state: SystemState) => {
+      const newColorSet = state.theme === 'light' ? 'dark' : 'light'
+      store.set(THEME_KEY, newColorSet)
+      document.documentElement.setAttribute('color-theme', newColorSet)
+      state.theme = newColorSet
     },
   },
 })
 
-export const { setDevMode, setColorSet } = systemSlice.actions
+export const { setTheme, toggleTheme } = systemSlice.actions
 
 export default systemSlice.reducer
 
 // Selector =====================
 
-export const getDevMode = (state: RootState): boolean => state.system.devMode
-
-export const getColorSet = (state: RootState): string => state.system.colorSet
+export const getTheme = (state: RootState): string => state.system.theme

@@ -1,0 +1,38 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/position';
+
+.gnb {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  border-bottom: 1px solid colors.$GRAYE;
+
+  ul {
+    display: flex;
+  }
+
+  li {
+    + li {
+      margin-left: 14px;
+    }
+  }
+
+  a {
+    padding: 4px 14px;
+    color: colors.$GRAY2;
+
+    &.isActive {
+      font-weight: 600;
+    }
+  }
+
+  .rightWing {
+    @include position.absolute(50% 24px auto auto);
+    transform: translateY(-50%);
+
+    button {
+      margin-left: 14px;
+    }
+  }
+}
