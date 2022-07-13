@@ -1,5 +1,5 @@
 {
   "react":  ["cms", "cra", "next"],
   "node": ["pm2", "docker"],
-  "react-native": []
+  "react-native": ["origin", "webapp"]
 }
