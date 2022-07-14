@@ -1,0 +1,32 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.button {
+  @include flexbox.flexbox;
+  border: 1px solid colors.$GRAYA;
+  transition: 200ms;
+
+  + .button {
+    margin-left: 16px;
+  }
+
+  &.primary {
+    color: colors.$WHITE;
+    background-color: #586cf5;
+    border-color: transparent;
+  }
+
+  &.small {
+    height: 24px;
+    padding: 0 12px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  &.large {
+    height: 40px;
+    padding: 0 24px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+}

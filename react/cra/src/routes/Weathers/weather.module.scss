@@ -1,0 +1,47 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/constants/levels';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/responsive';
+@use '/src/styles/mixins/position';
+
+.weather {
+  position: relative;
+  width: 360px;
+  height: 720px;
+  padding: 40px;
+  color: colors.$WHITE;
+  background: linear-gradient(28deg, rgba(#0b0b41, 100%) 0%, rgba(#06709f, 100%) 100%);
+  border-radius: 60px;
+
+  @include responsive.after(ML) {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .lnb {
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    border-bottom: 1px solid colors.$GRAYE;
+
+    ul {
+      display: flex;
+    }
+
+    li {
+      + li {
+        margin-left: 14px;
+      }
+    }
+
+    a {
+      padding: 4px 14px;
+      color: colors.$WHITE;
+
+      &.isActive {
+        font-weight: 600;
+      }
+    }
+  }
+}
